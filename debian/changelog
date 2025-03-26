@@ -1,5 +1,132 @@
-template-repository (1.0-1) unstable; urgency=medium
+nng (1.10.1-1) unstable; urgency=medium
 
-  * Initial release
+  [ Laszlo Boszormenyi (GCS) ]
+  * New upstream release.
+  * Add python3-setuptools build dependency (closes: #1080852).
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+  [ Helge Deller <deller@gmx.de> ]
+  * Fix FTBFS on hppa with relaxing clock checks (closes: #1092201).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sun, 02 Feb 2025 20:11:21 +0100
+
+nng (1.10.0-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sun, 05 Jan 2025 21:12:14 +0100
+
+nng (1.9.0-2) unstable; urgency=medium
+
+  * Disable flaky self-tests (closes: #1088010).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Fri, 27 Dec 2024 10:40:47 +0100
+
+nng (1.9.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Disable TLS tests not working on buildds.
+  * Update Standards-Version to 4.7.0 .
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Fri, 11 Oct 2024 19:46:00 +0200
+
+nng (1.8.0-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Ship documentation in a separate package.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Fri, 31 May 2024 17:14:00 +0200
+
+nng (1.7.3-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Wed, 06 Mar 2024 17:54:01 +0100
+
+nng (1.7.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sun, 04 Feb 2024 08:48:51 +0100
+
+nng (1.7.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sun, 07 Jan 2024 10:44:46 +0100
+
+nng (1.6.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Use no for Rules-Requires-Root.
+  * Update Standards-Version to 4.6.2 .
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Wed, 06 Dec 2023 19:19:16 +0100
+
+nng (1.5.2-2) unstable; urgency=medium
+
+  * Backport upstream fix for endpoint close/shutdown to be synchronous
+    (closes: #1009409).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Wed, 13 Apr 2022 22:07:42 +0200
+
+nng (1.5.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Build with TLS support (closes: #959107):
+    - mention changed license terms to Apache-2.0 .
+  * Update debhelper level to 13 .
+  * Update Standards-Version to 4.5.1 .
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 21 Aug 2021 14:06:47 +0200
+
+nng (1.4.0-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 13 Feb 2021 09:06:16 +0100
+
+nng (1.3.2+git201005-1) unstable; urgency=medium
+
+  * New git snapshot release.
+  * Update patches.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 10 Oct 2020 21:50:16 +0200
+
+nng (1.3.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 08 Aug 2020 18:09:05 +0200
+
+nng (1.3.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update patches.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Wed, 04 Mar 2020 17:11:44 +0000
+
+nng (1.2.6-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Thu, 06 Feb 2020 22:41:30 +0000
+
+nng (1.2.5-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sun, 02 Feb 2020 09:30:28 +0000
+
+nng (1.2.4-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Link testlib with atomic if needed.
+  * Update Standards-Version to 4.5.0 .
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Tue, 21 Jan 2020 16:37:13 +0000
+
+nng (1.2.3-1) unstable; urgency=medium
+
+  * Initial release (closes: #948362).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Mon, 06 Jan 2020 22:59:39 +0000

@@ -1,4 +1,43 @@
 #!/usr/bin/make -f
+#-*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+override_dh_auto_clean:
+	$(RM) -r $(CURDIR)/build-shared
+	$(RM) -r $(CURDIR)/build-static
+	dh_auto_clean
+
+override_dh_auto_configure:
+	dh_auto_configure --buildsystem=cmake --builddir=build-static \
+		-- \
+		-DNNG_ENABLE_TLS=ON -DBUILD_SHARED_LIBS=OFF
+	dh_auto_configure --buildsystem=cmake --builddir=build-shared \
+		-- -DNNG_ENABLE_DOC=ON \
+		-DNNG_ENABLE_TLS=ON -DBUILD_SHARED_LIBS=ON
+
+override_dh_auto_build:
+	dh_auto_build --buildsystem=cmake --builddir=build-static
+	dh_auto_build --buildsystem=cmake --builddir=build-shared
+
+override_dh_auto_test:
+	dh_auto_test --buildsystem=cmake --builddir=build-static
+	dh_auto_test --buildsystem=cmake --builddir=build-shared
+
+override_dh_auto_install:
+	dh_auto_install --buildsystem=cmake --builddir=build-static
+	dh_auto_install --buildsystem=cmake --builddir=build-shared
+
+override_dh_install:
+	install -d $(CURDIR)/debian/nng-utils/usr/share/doc/nng/
+	mv $(CURDIR)/debian/tmp/usr/share/doc/nng/*.1.html \
+		$(CURDIR)/debian/nng-utils/usr/share/doc/nng/
+	dh_install
 
 %:
-	dh $@
+	dh $@ --buildsystem=cmake
+
+.PHONY: override_dh_auto_clean override_dh_auto_configure \
+	override_dh_auto_build override_dh_auto_test \
+	override_dh_auto_install override_dh_install

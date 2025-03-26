@@ -1,0 +1,6 @@
+no_rpath.patch
+disable_network_tests.patch
+disable_TLS_tests.patch
+disable_TLS_tests2.patch
+disable_flaky_tests.patch
+nng-ignore-timeout.patch

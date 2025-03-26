@@ -1,0 +1,48 @@
+Description: disable flaky self-tests
+ Multiple build attempts show that these tests are not reliable and randomly
+ fail at times.
+Author: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Bug-Debian: https://bugs.debian.org/1088010
+Forwarded: no
+Last-Update: 2024-12-27
+
+---
+
+--- a/src/sp/transport/socket/CMakeLists.txt
++++ b/src/sp/transport/socket/CMakeLists.txt
+@@ -12,4 +12,4 @@ nng_directory(socket)
+ 
+ nng_sources_if(NNG_TRANSPORT_FDC sockfd.c)
+ nng_defines_if(NNG_TRANSPORT_FDC NNG_TRANSPORT_FDC)
+-nng_test(sockfd_test)
+\ No newline at end of file
++#nng_test(sockfd_test)
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -131,10 +131,10 @@ add_nng_test1(httpserver 30 NNG_SUPP_HTT
+ add_nng_test(inproc 5)
+ add_nng_test(ipc 5)
+ add_nng_test(ipcsupp 10)
+-add_nng_test(multistress 60)
++#add_nng_test(multistress 60)
+ add_nng_test(nonblock 60)
+ add_nng_test(options 5)
+-add_nng_test(pipe 5)
++#add_nng_test(pipe 5)
+ add_nng_test(pollfd 5)
+ add_nng_test(scalability 20 ON)
+ add_nng_test(synch 5)
+@@ -143,11 +143,11 @@ add_nng_test(tcpsupp 10)
+ add_nng_test(tcp 180)
+ add_nng_test(tcp6 60)
+ add_nng_test(ws 30)
+-add_nng_test(wss 30)
++#add_nng_test(wss 30)
+ add_nng_test1(zt 60 NNG_TRANSPORT_ZEROTIER)
+ 
+ add_nng_test(reqctx 5)
+-add_nng_test(reqstress 60)
++#add_nng_test(reqstress 60)
+ 
+ # compatibility tests
+ # We only support these if ALL the legacy protocols are supported.  This
