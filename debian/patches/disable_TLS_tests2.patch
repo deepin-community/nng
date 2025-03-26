@@ -1,0 +1,36 @@
+Description: disable more networked TLS tests
+ These still fails on buildds with no network access, but with a different
+ error code.
+Author: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Forwarded: no
+Last-Update: 2024-10-11
+
+---
+
+--- a/src/sp/transport/tls/tls_tran_test.c
++++ b/src/sp/transport/tls/tls_tran_test.c
+@@ -83,9 +83,11 @@ test_tls_wild_card_bind(void)
+ 	(void) snprintf(addr, sizeof(addr), "tls+tcp4://*:%u", port);
+ 	nng_socket_set_ptr(s1, NNG_OPT_TLS_CONFIG, sc);
+ 	nng_socket_set_ptr(s2, NNG_OPT_TLS_CONFIG, cc);
++	/*
+ 	NUTS_PASS(nng_listen(s1, addr, NULL, 0));
+ 	(void) snprintf(addr, sizeof(addr), "tls+tcp://127.0.0.1:%u", port);
+ 	NUTS_PASS(nng_dial(s2, addr, NULL, 0));
++	*/
+ 	NUTS_CLOSE(s2);
+ 	NUTS_CLOSE(s1);
+ 	nng_tls_config_free(cc);
+@@ -199,10 +201,12 @@ test_tls_malformed_address(void)
+ 	    nng_dial(s1, "tls+tcp://127.0.0.1.32", NULL, 0), NNG_EADDRINVAL);
+ 	NUTS_FAIL(
+ 	    nng_dial(s1, "tls+tcp://127.0.x.1.32", NULL, 0), NNG_EADDRINVAL);
++	/*
+ 	NUTS_FAIL(
+ 	    nng_listen(s1, "tls+tcp://127.0.0.1.32", NULL, 0), NNG_EADDRINVAL);
+ 	NUTS_FAIL(
+ 	    nng_listen(s1, "tls+tcp://127.0.x.1.32", NULL, 0), NNG_EADDRINVAL);
++	*/
+ 	NUTS_CLOSE(s1);
+ }
+ 

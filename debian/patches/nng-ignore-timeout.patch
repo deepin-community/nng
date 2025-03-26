@@ -1,0 +1,23 @@
+[PATCH] Ignore timeout when building debian package
+
+Performance of various debian buildd servers are varying a lot.
+Make the clock checks generally relaxed to avoid build failures.
+
+Signed-off-by: Helge Deller <deller@gmx.de>
+
+diff -up ./src/platform/platform_test.c.org ./src/platform/platform_test.c
+--- ./src/platform/platform_test.c.org	2025-01-06 03:27:42.764352830 +0000
++++ ./src/platform/platform_test.c	2025-01-06 03:29:00.306291297 +0000
+@@ -31,11 +31,8 @@ add(void *arg)
+ 	nng_mtx_unlock(aa->mx);
+ }
+ 
+-#ifdef __has_feature
+-#if __has_feature(thread_sanitizer) || __has_feature(memory_sanitizer)
++/* unconditionally disable clock checks on debian buildd servers */
+ #define RELAXED_CLOCKS
+-#endif
+-#endif
+ 
+ void
+ test_sleep(void)
